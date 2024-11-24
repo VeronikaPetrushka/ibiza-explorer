@@ -10,7 +10,7 @@ const { height, width } = Dimensions.get('window');
 
 const heightThreshold = 700;
 
-const imageContainerHeight = height < heightThreshold ? height * 0.28 : height * 0.33;
+const imageContainerHeight = height < heightThreshold ? height * 0.28 : height * 0.32;
 
 const CheckIn = ({ place }) => {
     const mapRef = useRef(null);

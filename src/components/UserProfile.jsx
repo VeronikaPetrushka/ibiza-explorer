@@ -178,7 +178,7 @@ const UserProfile = ({ visible, onClose }) => {
                                     />
                                     <Text style={styles.text}>Date of birth</Text>
                                      <View style={styles.dropdownContainer}>
-                                      <View style={{width: '28%'}}>
+                                      <View style={{width: '26%'}}>
                                         <DropDownPicker
                                               open={dayOpen}
                                               setOpen={setDayOpen}
@@ -193,7 +193,7 @@ const UserProfile = ({ visible, onClose }) => {
                                               dropDownDirection="BOTTOM"                        
                                           />
                                       </View>
-                                      <View style={{width: '28%'}}>
+                                      <View style={{width: '30%'}}>
                                         <DropDownPicker
                                               open={monthOpen}
                                               setOpen={setMonthOpen}
