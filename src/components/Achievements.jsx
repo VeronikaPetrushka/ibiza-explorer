@@ -68,7 +68,7 @@ const Achievements = () => {
           <Text style={styles.detailsButtonText}>Details</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={[styles.detailsButton, {backgroundColor: '#ffc000'}]}
+          style={[styles.detailsButton, {backgroundColor: '#f58403'}]}
           onPress={() => handleAchievementPress(item)}
         >
           <Text style={styles.detailsButtonText}>Achievement</Text>
@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
     top: height * 0.04,
     left: 10,
     zIndex: 10,
+    transform: [{ rotate: '180deg' }]
   },
   text: {
     fontSize: 20,
@@ -161,7 +162,7 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   visitedBorder: {
-    borderColor: '#ffc000',
+    borderColor: '#f58403',
   },
   placeName: {
     marginTop: 10,

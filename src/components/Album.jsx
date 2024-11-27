@@ -45,7 +45,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: height * 0.04,
         left: 10,
-        zIndex: 10
+        zIndex: 10,
+        transform: [{ rotate: '180deg' }]
     },
     title: {
         fontSize: 26,

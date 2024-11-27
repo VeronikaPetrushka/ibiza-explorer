@@ -21,6 +21,15 @@ const CheckIn = ({ place }) => {
     const [value, setValue] = useState(null);
     const [visited, setVisited] = useState(false);
     const [photos, setPhotos] = useState([]);
+    const [mapVisible, setMapVisible] = useState(false);
+
+    const handleMapVisible = () => {
+        if(mapVisible) {
+            setMapVisible(false)
+        } else {
+            setMapVisible(true)
+        }
+    };
 
     const checkIfVisited = async () => {
         try {
@@ -89,7 +98,7 @@ const CheckIn = ({ place }) => {
     
     const handleSubmit = async () => {
         if (photos.length === 0 ) {
-            Alert.alert('Error', 'Please upload at least one photo and select a trip date range.');
+            Alert.alert('Error', `Please upload at least one photo to show that you visited ${place.name}.`);
             return;
         }
     
@@ -131,46 +140,52 @@ const CheckIn = ({ place }) => {
 
             <Text style={styles.title}>{place.name}</Text>
 
-            <View style={styles.mapContainer}>
-                <MapView
-                    ref={mapRef}
-                    style={styles.map}
-                    initialRegion={{
-                        latitude: place.coordinates[0].lat,
-                        longitude: place.coordinates[0].lng,
-                        latitudeDelta: 0.04,
-                        longitudeDelta: 0.04,
-                    }}
-                >
-                    <Marker
-                        coordinate={{
+                <TouchableOpacity style={styles.uploadButton} onPress={handleMapVisible}>
+                    <Text style={styles.uploadButtonText}>See on the map</Text>
+                </TouchableOpacity>
+
+                {mapVisible && (
+                    <View style={styles.mapContainer}>
+                        <MapView
+                        ref={mapRef}
+                        style={styles.map}
+                        initialRegion={{
                             latitude: place.coordinates[0].lat,
                             longitude: place.coordinates[0].lng,
+                            latitudeDelta: 0.04,
+                            longitudeDelta: 0.04,
                         }}
-                    >
-                        <View>
-                            <Image
-                                source={place.image}
-                                style={[styles.markerImage, { width: markerSize, height: markerSize }]}
-                            />
-                            {visited && (
-                                <View style={styles.visitedIcon}>
-                                    <Icons type={'visited'} />
+                        >
+                            <Marker
+                                coordinate={{
+                                    latitude: place.coordinates[0].lat,
+                                    longitude: place.coordinates[0].lng,
+                                }}
+                            >
+                                <View>
+                                    <Image
+                                        source={place.image}
+                                        style={[styles.markerImage, { width: markerSize, height: markerSize }]}
+                                    />
+                                    {visited && (
+                                        <View style={styles.visitedIcon}>
+                                            <Icons type={'visited'} />
+                                        </View>
+                                    )}
                                 </View>
-                            )}
-                        </View>
-                    </Marker>
-                </MapView>
-                <TouchableOpacity style={styles.zoomButton} onPress={handleZoomToggle}>
-                    <Text style={styles.zoomButtonText}>{zoomedIn ? "Zoom Out" : "Zoom In"}</Text>
-                </TouchableOpacity>
-            </View>
+                            </Marker>
+                        </MapView>
+                            <TouchableOpacity style={styles.zoomButton} onPress={handleZoomToggle}>
+                            <Text style={styles.zoomButtonText}>{zoomedIn ? "Zoom Out" : "Zoom In"}</Text>
+                        </TouchableOpacity>
+                    </View>
+                )}
 
-            <TouchableOpacity style={styles.uploadButton} onPress={handleSelectPhoto}>
+            <TouchableOpacity style={[styles.uploadButton, {backgroundColor: '#b584fc'}]} onPress={handleSelectPhoto}>
                 <Text style={styles.uploadButtonText}>Upload Photo</Text>
             </TouchableOpacity>
 
-            {photos.length > 0 ? (
+            {photos.length > 0 && (
                 <ScrollView 
                     horizontal 
                     showsHorizontalScrollIndicator={false} 
@@ -182,12 +197,6 @@ const CheckIn = ({ place }) => {
                         </View>
                     ))}
                 </ScrollView>
-            ) : (
-                <View style={styles.imagePlaceholder}>
-                    <View style={styles.imageIcon}>
-                        <Icons type={'image'} />
-                    </View>
-                </View>
             )}
 
             <TouchableOpacity style={styles.checkBtn} onPress={handleSubmit}>
@@ -217,19 +226,20 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: height * 0.04,
         left: 10,
-        zIndex: 10
+        zIndex: 10,
+        transform: [{ rotate: '180deg' }]
     },
     title: {
         fontSize: 26,
         fontWeight: '900',
         marginBottom: 30,
-        color: '#4f1c86',
+        color: '#fd9014',
         width: width * 0.69,
         textAlign: 'center'
     },
     mapContainer: {
         width: '100%',
-        height: imageContainerHeight,
+        height: imageContainerHeight - height * 0.07,
         borderRadius: 10,
         overflow: 'hidden',
         marginBottom: 20,
@@ -259,18 +269,18 @@ const styles = StyleSheet.create({
         fontWeight: '300',
     },
     uploadButton: {
-        backgroundColor: '#a86ee9',
+        width: '100%',
+        backgroundColor: '#fcac61',
         padding: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 8,
+        borderRadius: 10,
         marginBottom: 20,
-        width: 200,
         alignSelf: 'center'
     },
     uploadButtonText: {
         color: '#fff',
-        fontSize: 16,
+        fontSize: 17,
         fontWeight: '900',
     },
     imageContainer: {
@@ -285,25 +295,9 @@ const styles = StyleSheet.create({
         height: '100%',
         resizeMode: 'cover'
     },
-    imagePlaceholder: {
-        width: '100%',
-        height: imageContainerHeight,
-        borderRadius: 10,
-        borderWidth: 2,
-        borderColor: '#8430e0',
-        backgroundColor: 'rgba(132, 48, 224, 0.2)',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderStyle: 'dashed',
-        marginBottom: 20,
-    },
-    imageIcon: {
-        width: 70,
-        height: 70
-    },
     imageCarousel: {
         width: '100%',
-        height: imageContainerHeight,
+        height: '100%',
         marginBottom: 20,
     },
     imageWrapper: {

@@ -178,7 +178,7 @@ const UserProfile = ({ visible, onClose }) => {
                                     />
                                     <Text style={styles.text}>Date of birth</Text>
                                      <View style={styles.dropdownContainer}>
-                                      <View style={{width: '26%'}}>
+                                      <View style={{width: '28%'}}>
                                         <DropDownPicker
                                               open={dayOpen}
                                               setOpen={setDayOpen}
@@ -193,7 +193,7 @@ const UserProfile = ({ visible, onClose }) => {
                                               dropDownDirection="BOTTOM"                        
                                           />
                                       </View>
-                                      <View style={{width: '30%'}}>
+                                      <View style={{width: '34%'}}>
                                         <DropDownPicker
                                               open={monthOpen}
                                               setOpen={setMonthOpen}
@@ -208,7 +208,7 @@ const UserProfile = ({ visible, onClose }) => {
                                               dropDownDirection="BOTTOM"                        
                                           />
                                         </View>
-                                        <View style={{width: '35%'}}>
+                                        <View style={{width: '33%'}}>
                                           <DropDownPicker
                                               open={yearOpen}
                                               setOpen={setYearOpen}
@@ -249,14 +249,14 @@ const UserProfile = ({ visible, onClose }) => {
                                         setValue={setVisitDate}
                                         items={visits}
                                         placeholder="None"
-                                        style={styles.dropdown}
-                                        dropDownContainerStyle={{ borderColor: '#9044e3', backgroundColor: '#e3effa', width: '100%', height: 80 }}
+                                        style={[styles.dropdown, {borderColor: '#f58403'}]}
+                                        dropDownContainerStyle={{ borderColor: '#f58403', backgroundColor: '#e3effa', width: '100%', height: 80 }}
                                         placeholderStyle={{ color: '#2C3E50', fontSize: 16 }}
                                         textStyle={{ color: '#2C3E50', fontSize: 16, fontWeight: '500' }}
                                         dropDownDirection="BOTTOM"                        
                                     />
 
-                                    <TouchableOpacity style={[styles.btnCreate, {backgroundColor: '#8430e0', marginTop: 18}]} onPress={handleRecommendation}>
+                                    <TouchableOpacity style={[styles.btnCreate, {backgroundColor: '#f58403', marginTop: 18}]} onPress={handleRecommendation}>
                                         <Text style={styles.btnCreateText}>Get my Recommendation</Text>
                                     </TouchableOpacity>
 

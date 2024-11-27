@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     },
     visitedMarkerBorder: {
         borderWidth: 3,
-        borderColor: '#FFC000',
+        borderColor: '#f58403',
     },
     btnText: {
         color: '#fff',
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     visitedButton: {
-        backgroundColor: '#FFC000',
+        backgroundColor: '#f58403',
     },
     detailsButtonText: {
         color: '#fff',

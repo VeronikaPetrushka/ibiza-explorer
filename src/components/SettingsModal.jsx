@@ -65,7 +65,7 @@ const SettingsModal = ({ visible, onClose }) => {
                                 <Text style={styles.modalTitle}>Settings</Text>
 
                                 <View style={styles.regulatorContainer}>
-                                    <Text style={styles.regulatorText}>Loudness</Text>
+                                    <Text style={styles.regulatorText}>Music</Text>
                                     <Text style={[styles.toggleText, isPlaying ? styles.toggleTextOn : styles.toggleTextOff]}>
                                         {isPlaying ? 'On' : 'Off'}
                                     </Text>
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
         width: width * 0.7,
         backgroundColor: 'transparent',
         borderWidth: 1,
-        borderColor: '#762bc9',
+        borderColor: '#f58403',
         borderRadius: 15,
         padding: 15,
         alignItems: 'center',
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     resetBtnText: {
-        color: '#762bc9',
+        color: '#f58403',
         fontSize: 19,
         fontWeight: '500',
     },
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     },
     cancelReset: {
         width: width * 0.7,
-        backgroundColor: '#762bc9',
+        backgroundColor: '#f58403',
         borderRadius: 15,
         padding: 15,
         alignItems: 'center',

@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '700',
         lineHeight: 18,
-        color: '#762bc9',
+        color: '#f58403',
         marginBottom: 20,
         textAlign: 'center'
     },
@@ -130,12 +130,12 @@ const styles = StyleSheet.create({
     previousButton: {
         width: 50,
         height: 50,
-        marginRight: 30
+        marginRight: 30,
+        transform: [{ rotate: '180deg' }]
     },
     nextButton: {
         width: 50,
         height: 50,
-        transform: [{ rotate: '180deg' }]
     },
     closeButton: {
         width: 150,
@@ -143,13 +143,13 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#762bc9',
+        backgroundColor: '#f79108',
         alignSelf: 'center'
     },
     buttonText: {
         color: '#fff',
-        fontSize: 17,
-        fontWeight: '300',
+        fontSize: 14,
+        fontWeight: '800',
     }
 });
 

@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
         top: height * 0.04,
         left: 10,
         zIndex: 10,
+        transform: [{ rotate: '180deg' }]
       },
 
     title: {
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '900',
         marginBottom: height * 0.02,
-        color: '#4f1c86',
+        color: '#f58403',
         textAlign: 'center'
       },
 

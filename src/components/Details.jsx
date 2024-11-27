@@ -64,22 +64,22 @@ const Details = ({ place }) => {
                     style={[styles.checkBtn, {backgroundColor: '#762bc9'}, isVisited && styles.visitedBorder]} 
                     onPress={handleAlbumPress}
                 >
-                    <Text style={[styles.checkBtnText, isVisited && {color: '#f2eafb'}]}>Album</Text>
+                    <Text style={[styles.checkBtnText, isVisited && {color: '#fcc587'}]}>Album</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity  
                     style={[styles.checkBtn, isVisited && styles.visitedBorder]} 
                     onPress={() => navigation.navigate('CheckInScreen', {place: place})}
                 >
-                    <Text style={[styles.checkBtnText, isVisited && {color: '#f2eafb'}]}>Check in</Text>
+                    <Text style={[styles.checkBtnText, isVisited && {color: '#fcc587'}]}>Check in</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.textContainer}>
                 <Text style={styles.name}>{place.name}</Text>
                 <ScrollView style={{width: '100%', height: height * 0.47}}>
-                    <Text style={styles.description}>Location: {place.location}</Text>
+                    <Text style={[styles.description, {color: '#420283'}]}>Location: {place.location}</Text>
                     <Text style={styles.description}>{place.description}</Text>
-                    <Text style={styles.fact}>{place.touristTip}</Text>
+                    <Text style={styles.fact}>Tourist tip: {place.touristTip}</Text>
                     <View style={{height: 100}}/>
                 </ScrollView>
             </View>
@@ -104,7 +104,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: height * 0.04,
         left: 10,
-        zIndex: 10
+        zIndex: 10,
+        transform: [{ rotate: '180deg' }]
     },
     image: {
         width: '100%',
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '900',
         marginBottom: 15,
-        color: '#4f1c86',
+        color: '#fd9014',
         textAlign: 'center'
     },
     description: {

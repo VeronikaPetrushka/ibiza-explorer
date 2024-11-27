@@ -63,6 +63,13 @@ const Home = () => {
 
             <View style={styles.upperPanel}>
                 <View style={styles.settingsContainer}>
+                    <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={handleTutorialVisible}>
+                        <Icons type={'tutorial'} />
+                    </TouchableOpacity>
+                    <Text style={styles.settingsText}>Tutorial</Text>
+                </View>
+
+                <View style={styles.settingsContainer}>
                     <TouchableOpacity style={styles.settingsBtn} onPress={handleProfileVisible}>
                         <Image 
                             source={uploadedImage} 
@@ -78,24 +85,13 @@ const Home = () => {
                     </TouchableOpacity>
                     <Text style={styles.settingsText}>Settings</Text>
                 </View>
-            </View>
 
-            <TouchableOpacity style={styles.tutorialBtn} onPress={handleTutorialVisible}>
-                <LinearGradient
-                            colors={['#cdacf2', '#e6d5f8']}
-                            
-                            start={{ x: -0.15, y: 0.5 }}
-                            end={{ x: 1.1, y: 0.5 }}
-                            style={[styles.gradient]}
-                        >
-                    <Text style={styles.tutorialText}>Tutorial</Text>
-                </LinearGradient>
-            </TouchableOpacity>
+            </View>
 
             <View style={styles.bottomPanel}>
                 <TouchableOpacity style={styles.adviceBtn} onPress={() => navigation.navigate('AchievementsScreen')}>
                     <LinearGradient
-                            colors={['#9044e3', '#b582ec']}
+                            colors={['#f58403', '#ffd19e']}
                             start={{ x: -0.15, y: 0.5 }}
                             end={{ x: 1.1, y: 0.5 }}
                             style={[styles.gradient]}
@@ -106,7 +102,7 @@ const Home = () => {
 
                 <TouchableOpacity style={styles.scoreBtn} onPress={() => navigation.navigate('RouteScreen')}>
                     <LinearGradient
-                            colors={['#b582ec', '#9044e3']}
+                            colors={['#ffd19e', '#f58403']}
                             start={{ x: -0.15, y: 0.5 }}
                             end={{ x: 1.1, y: 0.5 }}
                             style={[styles.gradient]}
@@ -117,13 +113,13 @@ const Home = () => {
             </View>
 
             <View style={styles.placesContainer}>
-                <ScrollView style={{width: '100%', height: '69%'}}>
+                <ScrollView style={{width: '100%', height: '77%'}}>
                     {places.map((place, index) => (
                         <View key={index} style={styles.place}>
                             <Image source={place.image} style={styles.placeImage} />
                             <Text style={styles.placeName}>{place.name}</Text>
                             <TouchableOpacity style={styles.detailsBtn} onPress={() => navigation.navigate('DetailsScreen', { place: place })}>
-                                <Text style={styles.detailsBtnText}>Details</Text>
+                                <Text style={styles.detailsBtnText}>Read more</Text>
                             </TouchableOpacity>
                         </View>
                     ))}
@@ -158,6 +154,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'space-around',
         flexDirection: 'row',
+        marginBottom: height * 0.05
     },
 
     settingsContainer: {
