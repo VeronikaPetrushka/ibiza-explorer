@@ -130,7 +130,7 @@ const Map = ({places}) => {
                 ))}
             </MapView>
             <TouchableOpacity style={styles.btn} onPress={handleNextMarker}>
-                <Text style={styles.btnText}>Next place</Text>
+                <Text style={styles.btnText}>Go next</Text>
             </TouchableOpacity>
         </View>
     );

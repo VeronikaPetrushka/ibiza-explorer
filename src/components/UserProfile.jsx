@@ -168,6 +168,9 @@ const UserProfile = ({ visible, onClose }) => {
                                     </View>
                                     <TouchableOpacity style={styles.btnUploadImage} onPress={uploadImageFromLibrary}>
                                         <Text style={styles.btnText}>Upload photo</Text>
+                                        <View style={{width: 30, height: 30, marginLeft: 20}}>
+                                            <Icons type={'upload'} />
+                                        </View>
                                     </TouchableOpacity>
                                     <TextInput
                                         value={name}
@@ -398,7 +401,8 @@ const styles = StyleSheet.create({
         borderWidth: 1.5,
         borderColor: '#c197ef',
         borderRadius: 10,
-        width: '100%'
+        width: '100%',
+        flexDirection: 'row'
       },
     
       errorText: {

@@ -61,18 +61,21 @@ const Achievements = () => {
           ]}
         />
         <Text style={styles.placeName}>{item.name}</Text>
-        <TouchableOpacity
-          style={styles.detailsButton}
-          onPress={() => handleDetailsPress(item)}
-        >
-          <Text style={styles.detailsButtonText}>Details</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.detailsButton, {backgroundColor: '#f58403'}]}
-          onPress={() => handleAchievementPress(item)}
-        >
-          <Text style={styles.detailsButtonText}>Achievement</Text>
-        </TouchableOpacity>
+
+        <View style={{width: '100%', alignItems: 'center', justifyContent: 'space-between', flexDirection: 'row'}}>
+          <TouchableOpacity
+            style={styles.detailsButton}
+            onPress={() => handleDetailsPress(item)}
+          >
+            <Text style={styles.detailsButtonText}>Details</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.detailsButton, {backgroundColor: '#f58403'}]}
+            onPress={() => handleAchievementPress(item)}
+          >
+            <Text style={styles.detailsButtonText}>Achievement</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   };
@@ -167,21 +170,21 @@ const styles = StyleSheet.create({
   placeName: {
     marginTop: 10,
     fontWeight: '700',
-    fontSize: 16,
+    fontSize: 20,
     textAlign: 'center',
     color: '#4f1c86',
   },
   detailsButton: {
     marginTop: 10,
     backgroundColor: '#9044e3',
-    paddingVertical: 6,
+    paddingVertical: 10,
     borderRadius: 10,
     alignItems: 'center',
-    width: '100%',
+    width: '48%',
   },
   detailsButtonText: {
     color: 'white',
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: '900',
   },
   modalOverlay: {

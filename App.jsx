@@ -1,5 +1,5 @@
-import React
-//  { useState, useEffect, useRef }
+import React,
+ { useState, useEffect, useRef }
   from 'react';
 // import { Animated, View, ImageBackground, StyleSheet } from 'react-native';
 import { enableScreens } from 'react-native-screens';
@@ -13,6 +13,8 @@ import AlbumScreen from './src/screens/AlbumScreen';
 import CheckInScreen from './src/screens/CheckInScreen';
 import AchievementsScreen from './src/screens/AchievementsScreen';
 import RouteScreen from './src/screens/RouteScreen';
+import PlacesScreen from './src/screens/PlacesScreen';
+import WelcomeModal from './src/components/WelcomeModal';
 
 enableScreens();
 
@@ -44,6 +46,12 @@ const App = () => {
     //             });
     //     });
     // }, []);
+
+    const [welcomeModalVisible, setWelcomeModalVisible] = useState(true);
+
+    const handleWelcomeVisible = () => {
+        setWelcomeModalVisible(!welcomeModalVisible);
+    };
   
     return (
         <MusicProvider>
@@ -67,6 +75,7 @@ const App = () => {
                         </ImageBackground>
                     </View>
                 ) : ( */}
+                    <WelcomeModal visible={welcomeModalVisible} onClose={handleWelcomeVisible}/>
                     <Stack.Navigator initialRouteName="HomeScreen">
                         <Stack.Screen 
                             name="HomeScreen" 
@@ -96,6 +105,11 @@ const App = () => {
                         <Stack.Screen 
                             name="RouteScreen" 
                             component={RouteScreen} 
+                            options={{ headerShown: false }} 
+                        />
+                        <Stack.Screen 
+                            name="PlacesScreen" 
+                            component={PlacesScreen} 
                             options={{ headerShown: false }} 
                         />
                     </Stack.Navigator>

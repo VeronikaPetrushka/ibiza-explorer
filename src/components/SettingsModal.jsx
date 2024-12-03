@@ -65,7 +65,9 @@ const SettingsModal = ({ visible, onClose }) => {
                                 <Text style={styles.modalTitle}>Settings</Text>
 
                                 <View style={styles.regulatorContainer}>
-                                    <Text style={styles.regulatorText}>Music</Text>
+                                    <View style={[{width: 55, height: 55}, !isPlaying && {opacity: 0.4}]}>
+                                        <Icons type={'music'} />
+                                    </View>
                                     <Text style={[styles.toggleText, isPlaying ? styles.toggleTextOn : styles.toggleTextOff]}>
                                         {isPlaying ? 'On' : 'Off'}
                                     </Text>

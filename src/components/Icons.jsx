@@ -32,6 +32,28 @@ const Icons = ({ type }) => {
     case 'visited':
         imageSource = require('../assets/icons/visited.png');
         break;
+    case 'achievements':
+        imageSource = require('../assets/icons/achievements.png');
+        break;
+    case 'route':
+        imageSource = require('../assets/icons/route.png');
+        break;
+    case 'places':
+        imageSource = require('../assets/icons/places.png');
+        break;
+    case 'album':
+        imageSource = require('../assets/icons/album.png');
+        break;
+    case 'checkin-btn':
+        imageSource = require('../assets/icons/checkin-btn.png');
+        break;
+    case 'music':
+        imageSource = require('../assets/icons/music.png');
+        break;
+    case 'upload':
+        imageSource = require('../assets/icons/upload.png');
+        iconStyle.push(styles.purpleLight);
+        break;
   }
 
   return (

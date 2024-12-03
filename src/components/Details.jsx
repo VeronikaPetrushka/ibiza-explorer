@@ -58,22 +58,15 @@ const Details = ({ place }) => {
             <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
                 <Icons type={'back'}/>
             </TouchableOpacity>
-                <Image source={place.image} style={styles.image} />
             <View style={styles.btnContainer}>
-                <TouchableOpacity  
-                    style={[styles.checkBtn, {backgroundColor: '#762bc9'}, isVisited && styles.visitedBorder]} 
-                    onPress={handleAlbumPress}
-                >
-                    <Text style={[styles.checkBtnText, isVisited && {color: '#fcc587'}]}>Album</Text>
+                <TouchableOpacity style={{width: 60, height: 60, marginRight: 40}} onPress={handleAlbumPress}>
+                    <Icons type={'album'} />
                 </TouchableOpacity>
-
-                <TouchableOpacity  
-                    style={[styles.checkBtn, isVisited && styles.visitedBorder]} 
-                    onPress={() => navigation.navigate('CheckInScreen', {place: place})}
-                >
-                    <Text style={[styles.checkBtnText, isVisited && {color: '#fcc587'}]}>Check in</Text>
+                <TouchableOpacity style={{width: 60, height: 60}} onPress={() => navigation.navigate('CheckInScreen', {place: place})}>
+                    <Icons type={'checkin-btn'} />
                 </TouchableOpacity>
             </View>
+            <Image source={place.image} style={styles.image} />
             <View style={styles.textContainer}>
                 <Text style={styles.name}>{place.name}</Text>
                 <ScrollView style={{width: '100%', height: height * 0.47}}>
@@ -95,7 +88,8 @@ const styles = StyleSheet.create({
         height: '100%',
         paddingTop: 0,
         paddingBottom: 30,
-        backgroundColor: '#e3effa'
+        backgroundColor: '#e3effa',
+        paddingTop: height * 0.07
     },
     backIcon: {
         width: 60,
@@ -110,8 +104,6 @@ const styles = StyleSheet.create({
     image: {
         width: '100%',
         height: height * 0.33,
-        borderBottomLeftRadius: 16,
-        borderBottomRightRadius: 16,
         marginBottom: 16,
     },
     visitedBorder: {
@@ -125,20 +117,7 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         paddingHorizontal: 16,
         flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    checkBtn: {
-        width: "48%",
-        height: height * 0.08,
-        borderRadius: 10,
-        backgroundColor: '#a86ee9',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    checkBtnText: {
-        color: "#fff",
-        fontSize: 20,
-        fontWeight: '900',
+        justifyContent: 'flex-end',
     },
     textContainer: {
         paddingHorizontal: 16,

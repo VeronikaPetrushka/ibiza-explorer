@@ -9,7 +9,7 @@ const AlbumScreen = ({ name, photos  }) => {
     const navigation = useNavigation();
 
     const handleBackPress = () => {
-        navigation.navigate('HomeScreen');
+        navigation.goBack('');
     };
 
     return (

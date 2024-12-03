@@ -63,7 +63,7 @@ const TutorialModal = ({ visible, onClose }) => {
                             </View>
                         ) : (
                             <TouchableOpacity style={styles.closeButton} onPress={onClose}>
-                                <Text style={styles.buttonText}>{currentIndex < tutorialData.length - 1 ? 'Next' : 'Close'}</Text>
+                                <Text style={styles.buttonText}>{currentIndex < tutorialData.length - 1 ? 'Next' : 'Start your journey !'}</Text>
                             </TouchableOpacity>    
                         )
                     }
@@ -138,8 +138,7 @@ const styles = StyleSheet.create({
         height: 50,
     },
     closeButton: {
-        width: 150,
-        padding: 7,
+        padding: 10,
         borderRadius: 12,
         alignItems: 'center',
         justifyContent: 'center',
