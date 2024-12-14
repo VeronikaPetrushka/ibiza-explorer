@@ -53,31 +53,31 @@ const Details = ({ place }) => {
     };
     
     return (
-        // <ImageBackground source={require('../assets/newDiz/back.png')} style={{ flex: 1 }}>
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
-                <Icons type={'back'}/>
-            </TouchableOpacity>
-            <View style={styles.btnContainer}>
-                <TouchableOpacity style={{width: 60, height: 60, marginRight: 40}} onPress={handleAlbumPress}>
-                    <Icons type={'album'} />
+        <ImageBackground source={require('../assets/back/1.png')} style={{ flex: 1 }}>
+            <View style={styles.container}>
+                <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
+                    <Icons type={'back'}/>
                 </TouchableOpacity>
-                <TouchableOpacity style={{width: 60, height: 60}} onPress={() => navigation.navigate('CheckInScreen', {place: place})}>
-                    <Icons type={'checkin-btn'} />
-                </TouchableOpacity>
+                <View style={styles.btnContainer}>
+                    <TouchableOpacity style={{width: 40, height: 40, marginBottom: 20}} onPress={handleAlbumPress}>
+                        <Icons type={'album'} />
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{width: 40, height: 40}} onPress={() => navigation.navigate('CheckInScreen', {place: place})}>
+                        <Icons type={'checkin-btn'} />
+                    </TouchableOpacity>
+                </View>
+                <Image source={place.image} style={styles.image} />
+                <View style={styles.textContainer}>
+                    <Text style={styles.name}>{place.name}</Text>
+                    <ScrollView style={{width: '100%', height: height * 0.6}}>
+                        <Text style={styles.location}>Location: {place.location}</Text>
+                        <Text style={styles.description}>{place.description}</Text>
+                        <Text style={styles.fact}>Tourist tip: {place.touristTip}</Text>
+                        <View style={{height: 100}}/>
+                    </ScrollView>
+                </View>
             </View>
-            <Image source={place.image} style={styles.image} />
-            <View style={styles.textContainer}>
-                <Text style={styles.name}>{place.name}</Text>
-                <ScrollView style={{width: '100%', height: height * 0.47}}>
-                    <Text style={[styles.description, {color: '#420283'}]}>Location: {place.location}</Text>
-                    <Text style={styles.description}>{place.description}</Text>
-                    <Text style={styles.fact}>Tourist tip: {place.touristTip}</Text>
-                    <View style={{height: 100}}/>
-                </ScrollView>
-            </View>
-        </View>
-        // </ImageBackground>
+        </ImageBackground>
     );
 };
 
@@ -87,9 +87,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         paddingTop: 0,
-        paddingBottom: 30,
-        backgroundColor: '#e3effa',
-        paddingTop: height * 0.07
+        paddingBottom: 10,
     },
     backIcon: {
         width: 60,
@@ -103,21 +101,21 @@ const styles = StyleSheet.create({
     },
     image: {
         width: '100%',
-        height: height * 0.33,
-        marginBottom: 16,
+        height: height * 0.35,
+        marginBottom: height * 0.02,
+        borderBottomLeftRadius: '100%',
+        borderBottomRightRadius: '100%',
+        resizeMode: 'cover'
     },
     visitedBorder: {
         borderWidth: 3,
         borderColor: '#FFC000',
     },
     btnContainer: {
-        width: '100%',
-        borderRadius: 10,
-        overflow: "hidden",
-        marginBottom: 16,
-        paddingHorizontal: 16,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
+        position: 'absolute',
+        top: height * 0.055,
+        right: 15,
+        zIndex: 10
     },
     textContainer: {
         paddingHorizontal: 16,
@@ -130,16 +128,30 @@ const styles = StyleSheet.create({
         color: '#fd9014',
         textAlign: 'center'
     },
+    location: {
+        fontSize: 17,
+        marginBottom: 10,
+        color: '#420283',
+        textAlign: 'justify'
+    },
     description: {
         fontSize: 17,
         marginBottom: 10,
         color: '#8430e0',
-        textAlign: 'justify'
+        textAlign: 'justify',
+        width: '100%',
+        padding: 10,
+        backgroundColor: '#fff',
+        borderRadius: 12
     },
     fact: {
         fontSize: 15,
         color: '#a86ee9',
-        textAlign: 'justify'
+        textAlign: 'justify',
+        width: '100%',
+        padding: 10,
+        backgroundColor: '#fff',
+        borderRadius: 12
     },
     visitedIcon: {
         width: 30,

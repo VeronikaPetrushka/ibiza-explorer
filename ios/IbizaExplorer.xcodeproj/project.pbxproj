@@ -469,7 +469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = IbizaExplorer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Ibiza Explorer";
@@ -499,7 +499,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				INFOPLIST_FILE = IbizaExplorer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Ibiza Explorer";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";

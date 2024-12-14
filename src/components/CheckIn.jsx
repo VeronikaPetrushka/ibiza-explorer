@@ -132,78 +132,78 @@ const CheckIn = ({ place }) => {
     };
 
     return (
-        // <ImageBackground source={require('../assets/newDiz/back.png')} style={{ flex: 1 }}>
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.backIcon} onPress={() => navigation.goBack('')}>
-                <Icons type={'back'} />
-            </TouchableOpacity>
-
-            <Text style={styles.title}>{place.name}</Text>
-
-                <TouchableOpacity style={styles.uploadButton} onPress={handleMapVisible}>
-                    <Text style={styles.uploadButtonText}>See on the map</Text>
+        <ImageBackground source={require('../assets/back/1.png')} style={{ flex: 1 }}>
+            <View style={styles.container}>
+                <TouchableOpacity style={styles.backIcon} onPress={() => navigation.goBack('')}>
+                    <Icons type={'back'} />
                 </TouchableOpacity>
 
-                {mapVisible && (
-                    <View style={styles.mapContainer}>
-                        <MapView
-                        ref={mapRef}
-                        style={styles.map}
-                        initialRegion={{
-                            latitude: place.coordinates[0].lat,
-                            longitude: place.coordinates[0].lng,
-                            latitudeDelta: 0.04,
-                            longitudeDelta: 0.04,
-                        }}
-                        >
-                            <Marker
-                                coordinate={{
-                                    latitude: place.coordinates[0].lat,
-                                    longitude: place.coordinates[0].lng,
-                                }}
+                <Text style={styles.title}>{place.name}</Text>
+
+                    <TouchableOpacity style={[styles.uploadButton, { borderColor: '#c97f10'}]} onPress={handleMapVisible}>
+                        <Text style={styles.uploadButtonText}>See on the map</Text>
+                    </TouchableOpacity>
+
+                    {mapVisible && (
+                        <View style={styles.mapContainer}>
+                            <MapView
+                            ref={mapRef}
+                            style={styles.map}
+                            initialRegion={{
+                                latitude: place.coordinates[0].lat,
+                                longitude: place.coordinates[0].lng,
+                                latitudeDelta: 0.04,
+                                longitudeDelta: 0.04,
+                            }}
                             >
-                                <View>
-                                    <Image
-                                        source={place.image}
-                                        style={[styles.markerImage, { width: markerSize, height: markerSize }]}
-                                    />
-                                    {visited && (
-                                        <View style={styles.visitedIcon}>
-                                            <Icons type={'visited'} />
-                                        </View>
-                                    )}
-                                </View>
-                            </Marker>
-                        </MapView>
-                            <TouchableOpacity style={styles.zoomButton} onPress={handleZoomToggle}>
-                            <Text style={styles.zoomButtonText}>{zoomedIn ? "Zoom Out" : "Zoom In"}</Text>
-                        </TouchableOpacity>
-                    </View>
+                                <Marker
+                                    coordinate={{
+                                        latitude: place.coordinates[0].lat,
+                                        longitude: place.coordinates[0].lng,
+                                    }}
+                                >
+                                    <View>
+                                        <Image
+                                            source={place.image}
+                                            style={[styles.markerImage, { width: markerSize, height: markerSize }]}
+                                        />
+                                        {visited && (
+                                            <View style={styles.visitedIcon}>
+                                                <Icons type={'visited'} />
+                                            </View>
+                                        )}
+                                    </View>
+                                </Marker>
+                            </MapView>
+                                <TouchableOpacity style={styles.zoomButton} onPress={handleZoomToggle}>
+                                <Text style={styles.zoomButtonText}>{zoomedIn ? "Zoom Out" : "Zoom In"}</Text>
+                            </TouchableOpacity>
+                        </View>
+                    )}
+
+                <TouchableOpacity style={[styles.uploadButton, {backgroundColor: '#b584fc', borderColor: '#9148f7'}]} onPress={handleSelectPhoto}>
+                    <Text style={styles.uploadButtonText}>Upload Photo</Text>
+                </TouchableOpacity>
+
+                {photos.length > 0 && (
+                    <ScrollView 
+                        horizontal 
+                        showsHorizontalScrollIndicator={false} 
+                        style={styles.imageCarousel}
+                    >
+                        {photos.map((uri, index) => (
+                            <View key={index} style={styles.imageWrapper}>
+                                <Image source={{ uri }} style={styles.image} />
+                            </View>
+                        ))}
+                    </ScrollView>
                 )}
 
-            <TouchableOpacity style={[styles.uploadButton, {backgroundColor: '#b584fc'}]} onPress={handleSelectPhoto}>
-                <Text style={styles.uploadButtonText}>Upload Photo</Text>
-            </TouchableOpacity>
-
-            {photos.length > 0 && (
-                <ScrollView 
-                    horizontal 
-                    showsHorizontalScrollIndicator={false} 
-                    style={styles.imageCarousel}
-                >
-                    {photos.map((uri, index) => (
-                        <View key={index} style={styles.imageWrapper}>
-                            <Image source={{ uri }} style={styles.image} />
-                        </View>
-                    ))}
-                </ScrollView>
-            )}
-
-            <TouchableOpacity style={styles.checkBtn} onPress={handleSubmit}>
-                <Text style={styles.checkBtnText}>Check in</Text>
-            </TouchableOpacity>
-        </View>
-        // </ImageBackground>
+                <TouchableOpacity style={styles.checkBtn} onPress={handleSubmit}>
+                    <Text style={styles.checkBtnText}>Check in</Text>
+                </TouchableOpacity>
+            </View>
+        </ImageBackground>
     );
 };
 
@@ -217,7 +217,6 @@ const styles = StyleSheet.create({
         padding: 16,
         paddingTop: height * 0.07,
         paddingBottom: height * 0.05,
-        backgroundColor: '#e3effa'
     },
     backIcon: {
         width: 60,
@@ -276,7 +275,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10,
         marginBottom: 20,
-        alignSelf: 'center'
+        alignSelf: 'center',
+        borderWidth: 2,
     },
     uploadButtonText: {
         color: '#fff',
@@ -320,6 +320,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#a86ee9',
         alignItems: 'center',
         justifyContent: 'center',
+        borderWidth: 2,
+        borderColor: '#8028fa'
     },
     checkBtnText: {
         color: "#fff",

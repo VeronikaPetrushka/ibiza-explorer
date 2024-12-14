@@ -13,28 +13,30 @@ const Places = () => {
       };
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
-                <Icons type={'back'} />
-            </TouchableOpacity>
-            <Text style={styles.title}>Attractions</Text>
+        <ImageBackground source={require('../assets/back/1.png')} style={{ flex: 1 }}>
+            <View style={styles.container}>
+                <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
+                    <Icons type={'back'} />
+                </TouchableOpacity>
+                <Text style={styles.title}>Attractions</Text>
 
-            <View style={styles.placesContainer}>
-                <ScrollView style={{width: '100%', height: '94%'}}>
-                    {places.map((place, index) => (
-                        <View key={index} style={styles.place}>
-                            <Image source={place.image} style={styles.placeImage} />
-                            <View style={{width: '47%', alignItems: 'center'}}>
-                                <Text style={styles.placeName}>{place.name}</Text>
-                                <TouchableOpacity style={styles.detailsBtn} onPress={() => navigation.navigate('DetailsScreen', { place: place })}>
-                                    <Text style={styles.detailsBtnText}>Read more</Text>
-                                </TouchableOpacity>
-                                </View>
-                        </View>
-                    ))}
-                </ScrollView>
+                <View style={styles.placesContainer}>
+                    <ScrollView style={{width: '100%', height: '94%'}}>
+                        {places.map((place, index) => (
+                            <View key={index} style={styles.place}>
+                                <Image source={place.image} style={styles.placeImage} />
+                                <View style={{width: '47%', alignItems: 'center'}}>
+                                    <Text style={styles.placeName}>{place.name}</Text>
+                                    <TouchableOpacity style={styles.detailsBtn} onPress={() => navigation.navigate('DetailsScreen', { place: place })}>
+                                        <Text style={styles.detailsBtnText}>Read more</Text>
+                                    </TouchableOpacity>
+                                    </View>
+                            </View>
+                        ))}
+                    </ScrollView>
+                </View>
             </View>
-        </View>
+        </ImageBackground>
     )
 };
 
@@ -46,7 +48,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         padding: 20,
         paddingTop: height * 0.07,
-        backgroundColor: '#e3effa'
     },
 
     backIcon: {

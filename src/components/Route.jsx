@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Alert, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
+import { View, Text, Alert, StyleSheet, Dimensions, TouchableOpacity, ImageBackground } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import Icons from "./Icons";
@@ -44,22 +44,24 @@ const Route = () => {
       };
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
-                <Icons type={'back'} />
-            </TouchableOpacity>
-            <Text style={styles.title}>{isRouteAvailable ? 'Map' : ''}</Text>
-            {isRouteAvailable ? (
-                <>
-                    {visitDate && <Text style={styles.date}>Suggested route for: {visitDate} days</Text>}
-                    <View style={{width: '100%', height: height * 0.75}}>
-                        <Map places={places} />
-                    </View>
-                </>
-            ) : (
-                <Text style={styles.text}>No recommended places yet, select visiting dates in settings first and come back to see your suggested route!</Text>
-            )}
-        </View>
+        <ImageBackground source={require('../assets/back/1.png')} style={{ flex: 1 }}>
+            <View style={styles.container}>
+                <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
+                    <Icons type={'back'} />
+                </TouchableOpacity>
+                <Text style={styles.title}>{isRouteAvailable ? 'Map' : ''}</Text>
+                {isRouteAvailable ? (
+                    <>
+                        {visitDate && <Text style={styles.date}>Suggested route for: {visitDate} days</Text>}
+                        <View style={{width: '100%', height: height * 0.75}}>
+                            <Map places={places} />
+                        </View>
+                    </>
+                ) : (
+                    <Text style={styles.text}>No recommended places yet, select visiting dates in settings first and come back to see your suggested route!</Text>
+                )}
+            </View>
+        </ImageBackground>
     );
 };
 
@@ -71,7 +73,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         padding: 20,
         paddingTop: height * 0.07,
-        backgroundColor: '#e3effa'
     },
 
     backIcon: {

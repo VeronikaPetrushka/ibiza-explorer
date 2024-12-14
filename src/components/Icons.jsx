@@ -17,10 +17,6 @@ const Icons = ({ type }) => {
     case 'back':
         imageSource = require('../assets/icons/back.png');
         break;
-    case 'image':
-        imageSource = require('../assets/icons/image.png');
-        iconStyle.push(styles.purple);
-        break;
     case 'settings':
         imageSource = require('../assets/icons/settings.png');
         iconStyle.push(styles.purple);
@@ -53,6 +49,9 @@ const Icons = ({ type }) => {
     case 'upload':
         imageSource = require('../assets/icons/upload.png');
         iconStyle.push(styles.purpleLight);
+        break;
+    case 'island':
+        imageSource = require('../assets/icons/island.png');
         break;
   }
 

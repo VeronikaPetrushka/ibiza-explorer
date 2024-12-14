@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, ScrollView, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { View, Text, Image, ScrollView, StyleSheet, Dimensions, TouchableOpacity, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icons from './Icons';
 
@@ -13,21 +13,23 @@ const AlbumScreen = ({ name, photos  }) => {
     };
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
-                <Icons type={'back'}/>
-            </TouchableOpacity>
-            <Text style={styles.title}>{name}</Text>
-            <ScrollView contentContainerStyle={styles.photosContainer}>
-                {photos.length > 0 ? (
-                    photos.map((uri, index) => (
-                        <Image key={index} source={{ uri }} style={styles.photo} />
-                    ))
-                ) : (
-                    <Text style={styles.noPhotosText}>No photos available for this trip, check in first, and come back !</Text>
-                )}
-            </ScrollView>
-        </View>
+        <ImageBackground source={require('../assets/back/1.png')} style={{ flex: 1 }}>
+            <View style={styles.container}>
+                <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
+                    <Icons type={'back'}/>
+                </TouchableOpacity>
+                <Text style={styles.title}>{name}</Text>
+                <ScrollView contentContainerStyle={styles.photosContainer}>
+                    {photos.length > 0 ? (
+                        photos.map((uri, index) => (
+                            <Image key={index} source={{ uri }} style={styles.photo} />
+                        ))
+                    ) : (
+                        <Text style={styles.noPhotosText}>No photos available for this trip, check in first, and come back !</Text>
+                    )}
+                </ScrollView>
+            </View>
+        </ImageBackground>
     );
 };
 
@@ -36,7 +38,6 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 16,
         paddingTop: height * 0.07,
-        backgroundColor: '#e3effa',
     },
     backIcon: {
         width: 60,

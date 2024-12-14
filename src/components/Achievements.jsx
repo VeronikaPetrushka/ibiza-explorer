@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList, Dimensions, Alert, Modal } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, FlatList, Dimensions, Alert, Modal, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import places from '../constants/places';
@@ -67,7 +67,7 @@ const Achievements = () => {
             style={styles.detailsButton}
             onPress={() => handleDetailsPress(item)}
           >
-            <Text style={styles.detailsButtonText}>Details</Text>
+            <Text style={styles.detailsButtonText}>Learn more</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.detailsButton, {backgroundColor: '#f58403'}]}
@@ -81,40 +81,41 @@ const Achievements = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
-        <Icons type={'back'} />
-      </TouchableOpacity>
-      <Text style={styles.title}>Achievements</Text>
-      {
-        visitedPlaces.length === 0 && (
-          <Text  style={styles.text}>You have no collected places yet. Check in first in any place and come back for your achievements.</Text>
-        )
-      }
-      <FlatList
-        data={visitedPlaces}
-        keyExtractor={(item) => item.name}
-        renderItem={renderPlace}
-        contentContainerStyle={styles.list}
-      />
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalOpen}
-        onRequestClose={handleModalClose}>
-        <View style={styles.modalOverlay}>
-            <View style={styles.modalContent}>
-                <TouchableOpacity style={styles.closeBtn} onPress={handleModalClose}>
-                    <Icons type={'close'} />
-                </TouchableOpacity>
-                {selectedPlace && (
-                  <Text style={styles.modalText}>{selectedPlace.achievement}</Text>
-                )}
-            </View>
+    <ImageBackground source={require('../assets/back/1.png')} style={{ flex: 1 }}>
+        <View style={styles.container}>
+            <TouchableOpacity style={styles.backIcon} onPress={handleBackPress}>
+              <Icons type={'back'} />
+            </TouchableOpacity>
+            <Text style={styles.title}>Achievements</Text>
+            {
+              visitedPlaces.length === 0 && (
+                <Text  style={styles.text}>You have no collected places yet. Check in first in any place and come back for your achievements.</Text>
+              )
+            }
+            <FlatList
+              data={visitedPlaces}
+              keyExtractor={(item) => item.name}
+              renderItem={renderPlace}
+              contentContainerStyle={styles.list}
+            />
+            <Modal
+              animationType="fade"
+              transparent={true}
+              visible={modalOpen}
+              onRequestClose={handleModalClose}>
+              <View style={styles.modalOverlay}>
+                  <View style={styles.modalContent}>
+                      <TouchableOpacity style={styles.closeBtn} onPress={handleModalClose}>
+                          <Icons type={'close'} />
+                      </TouchableOpacity>
+                      {selectedPlace && (
+                        <Text style={styles.modalText}>{selectedPlace.achievement}</Text>
+                      )}
+                  </View>
+              </View>
+          </Modal>
         </View>
-    </Modal>
-
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -123,7 +124,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     paddingTop: height * 0.07,
-    backgroundColor: '#e3effa',
   },
   backIcon: {
     width: 60,

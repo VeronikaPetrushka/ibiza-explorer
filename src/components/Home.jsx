@@ -50,69 +50,69 @@ const Home = () => {
     };
 
     return (
-        // <ImageBackground source={require('../assets/newDiz/back.png')} style={{ flex: 1 }}>
-        <View style={styles.container}>
+        <ImageBackground source={require('../assets/back/1.png')} style={{ flex: 1 }}>
+            <View style={styles.container}>
 
-            <Image source={require('../assets/decor/home.png')} style={styles.image} />
+                <Image source={require('../assets/decor/home.png')} style={styles.image} />
 
-            <View style={styles.upperPanel}>
-                <View style={styles.settingsContainer}>
-                    <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={handleTutorialVisible}>
-                        <Icons type={'tutorial'} />
-                    </TouchableOpacity>
-                    <Text style={styles.settingsText}>Tutorial</Text>
+                <View style={styles.upperPanel}>
+                    <View style={styles.settingsContainer}>
+                        <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={handleTutorialVisible}>
+                            <Icons type={'tutorial'} />
+                        </TouchableOpacity>
+                        <Text style={styles.settingsText}>Tutorial</Text>
+                    </View>
+
+                    <View style={styles.settingsContainer}>
+                        <TouchableOpacity style={styles.settingsBtn} onPress={handleProfileVisible}>
+                            <Image 
+                                source={uploadedImage} 
+                                style={styles.avatarImage}
+                            />
+                        </TouchableOpacity>
+                        <Text style={styles.settingsText}>Profile</Text>
+                    </View>
+
+                    <View style={styles.settingsContainer}>
+                        <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={handleSettingsVisible}>
+                            <Icons type={'settings'} />
+                        </TouchableOpacity>
+                        <Text style={styles.settingsText}>Settings</Text>
+                    </View>
+
                 </View>
 
-                <View style={styles.settingsContainer}>
-                    <TouchableOpacity style={styles.settingsBtn} onPress={handleProfileVisible}>
-                        <Image 
-                            source={uploadedImage} 
-                            style={styles.avatarImage}
-                        />
-                    </TouchableOpacity>
-                    <Text style={styles.settingsText}>Profile</Text>
+                <View style={styles.bottomPanel}>
+
+                    <View style={styles.settingsContainer}>
+                        <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={() => navigation.navigate('AchievementsScreen')}>
+                            <Icons type={'achievements'} />
+                        </TouchableOpacity>
+                        <Text style={styles.settingsText}>Achievements</Text>
+                    </View>
+
+                    <View style={styles.settingsContainer}>
+                        <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={() => navigation.navigate('RouteScreen')}>
+                            <Icons type={'route'} />
+                        </TouchableOpacity>
+                        <Text style={styles.settingsText}>Route</Text>
+                    </View>
+
+                    <View style={styles.settingsContainer}>
+                        <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={() => navigation.navigate('PlacesScreen')}>
+                            <Icons type={'places'} />
+                        </TouchableOpacity>
+                        <Text style={styles.settingsText}>Attractions</Text>
+                    </View>
+
                 </View>
 
-                <View style={styles.settingsContainer}>
-                    <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={handleSettingsVisible}>
-                        <Icons type={'settings'} />
-                    </TouchableOpacity>
-                    <Text style={styles.settingsText}>Settings</Text>
-                </View>
+                <UserProfile visible={profileModalVisible} onClose={handleProfileVisible} />
+                <SettingsModal visible={settingsModalVisible} onClose={handleSettingsVisible} />
+                <TutorialModal visible={tutorialModalVisible} onClose={handleTutorialVisible}/>
 
             </View>
-
-            <View style={styles.bottomPanel}>
-
-                <View style={styles.settingsContainer}>
-                    <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={() => navigation.navigate('AchievementsScreen')}>
-                        <Icons type={'achievements'} />
-                    </TouchableOpacity>
-                    <Text style={styles.settingsText}>Achievements</Text>
-                </View>
-
-                <View style={styles.settingsContainer}>
-                    <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={() => navigation.navigate('RouteScreen')}>
-                        <Icons type={'route'} />
-                    </TouchableOpacity>
-                    <Text style={styles.settingsText}>Route</Text>
-                </View>
-
-                <View style={styles.settingsContainer}>
-                    <TouchableOpacity style={[styles.settingsBtn, {borderWidth: 0, borderRadius: 0}]} onPress={() => navigation.navigate('PlacesScreen')}>
-                        <Icons type={'places'} />
-                    </TouchableOpacity>
-                    <Text style={styles.settingsText}>Attractions</Text>
-                </View>
-
-            </View>
-
-            <UserProfile visible={profileModalVisible} onClose={handleProfileVisible} />
-            <SettingsModal visible={settingsModalVisible} onClose={handleSettingsVisible} />
-            <TutorialModal visible={tutorialModalVisible} onClose={handleTutorialVisible}/>
-
-        </View>
-        // </ImageBackground>
+        </ImageBackground>
     )
 };
 
@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         padding: 20,
         paddingTop: height * 0.07,
-        backgroundColor: '#e3effa'
     },
 
     image: {
@@ -168,7 +167,7 @@ const styles = StyleSheet.create({
     settingsText: {
         fontSize: 11,
         fontWeight: '900',
-        color: '#8430e0'
+        color: '#fff'
     },
 
     quizIcon: {
@@ -180,56 +179,11 @@ const styles = StyleSheet.create({
         zIndex: 15
     },
 
-    tutorialBtn: {
-        width: '100%',
-        height: height * 0.075,
-        padding: 14,
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row',
-        borderRadius: 14,
-        overflow: 'hidden',
-        marginBottom: height * 0.02,
-        marginTop: height * 0.03,
-    },
-
-    tutorialText: {
-        fontSize: 19,
-        fontWeight: '900',
-        color: '#6926b3'
-    },
-
-    gradient: {
-        ...StyleSheet.absoluteFillObject,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 12,
-        flexDirection: 'row',
-    },
-
     bottomPanel: {
         width: '100%',
         alignItems: 'center',
         justifyContent: 'space-around',
         flexDirection: 'row'
-    },
-
-    adviceBtn: {
-        width: '48%',
-        height: height * 0.065,
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row',
-        borderRadius: 14,
-        overflow: 'hidden',
-    },
-
-    scoreBtn: {
-        width: '48%',
-        height: height * 0.065,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 14,
     },
 
     btnText: {

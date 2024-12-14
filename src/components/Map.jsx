@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-import MapView, { Marker, Callout } from 'react-native-maps';
+import MapView, { Marker, Callout, Polyline } from 'react-native-maps';
 
 const Map = ({places}) => {
     const mapRef = useRef(null);
@@ -128,6 +128,14 @@ const Map = ({places}) => {
                         </Callout>
                     </Marker>
                 ))}
+                <Polyline
+                    coordinates={places.map((item) => ({
+                        latitude: item.coordinates[0].lat,
+                        longitude: item.coordinates[0].lng,
+                    }))}
+                    strokeColor="rgba(118, 43, 201, 0.5)"
+                    strokeWidth={2}
+                />
             </MapView>
             <TouchableOpacity style={styles.btn} onPress={handleNextMarker}>
                 <Text style={styles.btnText}>Go next</Text>

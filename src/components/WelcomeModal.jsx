@@ -15,6 +15,9 @@ const WelcomeModal = ({ visible, onClose }) => {
                 <TouchableOpacity style={styles.closeBtn} onPress={onClose}>
                     <Icons type={'close'} />
                 </TouchableOpacity>
+                <View style={{width: 70, height: 70, marginBottom: 20}}>
+                    <Icons type={'island'} />
+                </View>
                 <Text style={styles.modalText}>Welcome to your ultimate travel companion for the island! Discover personalized routes, unique achievements, and unforgettable sights. Let’s dive into your adventure!
                 </Text>
             </View>
@@ -36,7 +39,6 @@ const styles = StyleSheet.create({
         width: '80%',
         backgroundColor: '#fff',
         padding: 16,
-        paddingTop: 50,
         borderRadius: 16,
         alignItems: 'center',
         shadowColor: '#000',
